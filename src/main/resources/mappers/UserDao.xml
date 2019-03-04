@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssmdemo.dao.UserDao">
+
+    <insert id="addUser" parameterType="com.ssmdemo.dao.entity.UserEntity">
+        INSERT INTO
+        user(id,username,password)
+        VALUES(#{id},#{username},#{password});
+    </insert>
+    <update id="update" parameterType="com.ssmdemo.dao.entity.UserEntity">
+        UPDATE user
+        SET id=#{id},username=#{username},password=#{password}
+        WHERE id=#{id}
+    </update>
+
+    <select id="selectByid" resultType="com.ssmdemo.dao.entity.UserEntity" parameterType="java.lang.Integer">
+        SELECT *
+        FROM user
+        WHERE id=#{id};
+    </select>
+
+    <delete id="delete" parameterType="java.lang.Integer">
+        DELETE FROM user
+        WHERE id=#{id}
+    </delete>
+
+    <select id="selectByName" resultType="com.ssmdemo.dao.entity.UserEntity">
+        SELECT *
+        from user
+        where username=#{username};
+    </select>
+
+</mapper>

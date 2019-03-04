@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ssmdemo.dao.DoctorDao">
+
+    <resultMap id="docInfoList" type="com.ssmdemo.dao.entity.DoctorEntity">
+
+        <constructor>
+            <idArg column="docid" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="name" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="gender" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="department" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="address" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="lat" jdbcType="DOUBLE" javaType="java.lang.Double"/>
+            <arg column="lng" jdbcType="DOUBLE" javaType="java.lang.Double"/>
+            <arg column="startTime" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="endTime" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="phoneNumber" jdbcType="VARCHAR" javaType="java.lang.String"/>
+            <arg column="language" jdbcType="VARCHAR" javaType="java.lang.String"/>
+        </constructor>
+    </resultMap>
+
+    <select id="getDocByUserFilter" resultMap="docInfoList" >
+        SELECT docid, name, gender, department, address, lat, lng, startTime, endTime, phoneNumber, language
+        FROM DoctorEntity
+        WHERE department=#{department} and language=#{language} and
+         startTime &lt;= #{startTime} and endTime &gt;= #{endTime} and lat &lt;= #{userLat}+5 and lat &gt;= #{userLat}-5 and lng &lt;= #{userLng}+5 and lng &gt;=#{userLng}-5;
+    </select>
+
+    <select id="getDocByUserPosition" resultMap="docInfoList">
+        SELECT docid, name, gender, department, address, lat, lng, startTime, endTime, phoneNumber, language
+        from DoctorEntity where lat &lt;= #{userLat}+5 and lat &gt;= #{userLat}-5 and lng &lt;= #{userLng}+5 and lng &gt;=#{userLng}-5;
+    </select>
+
+    <!-->
+       如何将多条数据同时输出，采用List
+    <-->
+    <select id="getDocInfoByLanguage" resultMap="docInfoList">
+         select * from DoctorEntity where language =#{language};
+    </select>
+
+</mapper>

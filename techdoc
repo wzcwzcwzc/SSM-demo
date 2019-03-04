@@ -1,0 +1,9 @@
+该项目使用SSM框架 目的就是为了解除个想任务之间的耦合度 使用Maven进行项目的配置管理
+
+关于用户的访问途径可以归纳为一下流程：
+
+JSP---->Controller(Spring MVC)---->service层---->DAO数据层---->Database
+    |                                 |             |
+   AJAX                            业务逻辑实现     Mybatis
+   JQuery
+

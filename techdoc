@@ -2,8 +2,9 @@
 
 关于用户的登陆注册可以归纳为以下流程：
 
-JSP---->Controller(Spring MVC)---->service层---->DAO数据层---->Database
-    |                                 |             |
-   AJAX                            业务逻辑实现     Mybatis
-   JQuery
+JSP ----> Controller(Spring MVC) ----> service ----> DAO ---->Database
+     |                                    |           |
+    AJAX                            business-logic  Mybatis
+    JQuery
+    JavaScript
 

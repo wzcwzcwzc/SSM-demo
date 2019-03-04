@@ -2,7 +2,7 @@
 
 关于用户的登陆注册可以归纳为以下流程：
 
-JSP ----> Controller(Spring MVC) ----> service ----> DAO ---->Database
+JSP ----> Controller(Spring MVC) ----> service ----> DAO ----> Database
      |                                    |           |
     AJAX                            business-logic  Mybatis
     JQuery

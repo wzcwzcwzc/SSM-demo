@@ -78,10 +78,8 @@ public class UserController {
 
         if(user_id != null){
             ServerResponse<UserEntity> response = userService.deleteUser(Integer.parseInt(user_id));
-            System.out.println("Msg:"+response.getMsg()+"\tstatus:"+response.getStatus()+"\tdata:"+response.getData());
             return response;
         }else{
-            System.out.println("delete fail");
             return ServerResponse.createByErrorMessage("delete wrong");
         }
     }

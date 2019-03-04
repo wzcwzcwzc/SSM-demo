@@ -10,8 +10,7 @@ import org.springframework.stereotype.Service;
 import javax.annotation.Resource;
 
 /**
- * @author superman
- * @date
+ * @author Barry Wang
  * */
     @Service
     public class UserServiceImpl implements UserService {
